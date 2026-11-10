@@ -160,11 +160,14 @@ function icsHeader(name, desc, tzid) {
  * 生成一个全天事件
  * @param {string} dateStr  "YYYY-MM-DD"
  * @param {string} summary  标题
- * @param {object} opts     {desc, uid, transp}
+ * @param {object} opts     {desc, uid, transp, endDate, appleSpecial}
  */
 function allDayEvent(dateStr, summary, opts = {}) {
   const start = parseYmd(dateStr);
-  const end = new Date(start.getFullYear(), start.getMonth(), start.getDate() + 1);
+  // 支持跨多天：endDate 为"结束日 + 1 天"（ICS 的 DTEND 是排他日期）
+  const end = opts.endDate
+    ? parseYmd(opts.endDate)
+    : new Date(start.getFullYear(), start.getMonth(), start.getDate() + 1);
   const uid = opts.uid || `${fmtDate(start)}-${Buffer.from(summary).toString('hex').slice(0, 12)}@cn-holiday-ics`;
   // DTSTAMP 用事件日期本身，保证同一份数据多次生成结果完全一致，
   // 避免 CI 每天因时间戳变化产生无意义的提交
@@ -180,6 +183,11 @@ function allDayEvent(dateStr, summary, opts = {}) {
   if (opts.desc) lines.push(`DESCRIPTION:${escapeText(opts.desc)}`);
   // TRANSP:TRANSPARENT 表示不占用忙碌时间，不干扰会议安排
   lines.push(`TRANSP:${opts.transp || 'TRANSPARENT'}`);
+  // 标明为全天事件，Outlook 需要
+  lines.push('X-MICROSOFT-CDO-ALLDAYEVENT:TRUE');
+  lines.push('X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE');
+  // 苹果专有属性：让日历识别为"法定节假日"/"调休补班"，显示官方样式
+  if (opts.appleSpecial) lines.push(`X-APPLE-SPECIAL-DAY:${opts.appleSpecial}`);
   lines.push('SEQUENCE:0');
   lines.push('STATUS:CONFIRMED');
   lines.push('END:VEVENT');
@@ -267,9 +275,9 @@ function majorHolidayStarts(year) {
   const add = (m, d, name) => list.push({ ymd: m * 100 + d, name });
   add(1, 1, '元旦');
 
-  // 农历节日换算
+  // 农历节日换算（注意：闰月年份需要把"月名"转成含闰月的"序号"）
   const pair = (lm, ld, name) => {
-    const s = lunar.lunarToSolar(year, lm, ld);
+    const s = lunar.lunarToSolar(year, lunarMonthToIndex(year, lm), ld);
     if (s && !s.error) list.push({ ymd: s.month * 100 + s.day, name });
   };
   pair(1, 1, '春节');
@@ -513,22 +521,24 @@ async function main() {
       }
     }
     const totalDays = range.items.length;
-    for (let i = 0; i < range.items.length; i++) {
-      const item = range.items[i];
-      const dateStr = fmtISODate(item.date);
-      // 关键：整段假期用完全相同的标题。
-      // 苹果日历（以及多数客户端）只有在相邻全天事件标题一致时才画成连续横条，
-      // 首日写「元旦（3天）」、其余写「放假」会被切成互不相连的方块。
-      // 天数信息改放 DESCRIPTION，不影响显示连续性。
-      legalEvents.push(
-        allDayEvent(dateStr, `🎉 ${festName}`, {
-          uid: `legal-rest-${dateStr}@cn-holiday-ics`,
-          desc: `法定节假日：${festName}（第 ${i + 1}/${totalDays} 天，连休 ${totalDays} 天）\n数据来源：云日历 mtapi.ruanmei.com`,
-        })
-      );
-    }
+    // 关键：整段假期只生成 1 个跨多天事件（DTSTART~DTEND），
+    // 而不是每天 1 个。苹果/Google/Outlook 都会把跨天全天事件画成一整条连续横条，
+    // 每天 1 个事件则会被切成互不相连的方块（即使标题相同）。
+    const startStr = fmtISODate(range.start);
+    const endExclusive = new Date(range.end);
+    endExclusive.setDate(endExclusive.getDate() + 1);
+    legalEvents.push(
+      allDayEvent(startStr, `🎉 ${festName}`, {
+        uid: `legal-rest-${startStr}@cn-holiday-ics`,
+        endDate: fmtISODate(endExclusive),
+        desc: `法定节假日：${festName}（共 ${totalDays} 天）\n数据来源：云日历 mtapi.ruanmei.com`,
+        // 让苹果日历把它当作官方节假日，而不是普通全天事件
+        appleSpecial: 'WORK-HOLIDAY',
+      })
+    );
   }
 
+  // 补班日：同一天可能只有一个，按日期各自成事件
   for (const item of workAbs) {
     const dateStr = fmtISODate(item.date);
     legalEvents.push(
@@ -537,6 +547,7 @@ async function main() {
         desc: '调休补班日\n数据来源：云日历 mtapi.ruanmei.com',
         // 补班是"要上班"，用 OPAQUE 让日历显示为忙碌更直观
         transp: 'OPAQUE',
+        appleSpecial: 'ALTERNATE-WORKDAY',
       })
     );
   }
