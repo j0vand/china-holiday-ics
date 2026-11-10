@@ -42,7 +42,7 @@
 ## 本地运行
 
 ```bash
-node gen.js              # 生成到 out/
+node gen.js              # 生成到 docs/
 node gen.js --serve 8787 # 生成后启动本地 HTTP 服务，供局域网设备订阅
 ```
 
@@ -56,7 +56,7 @@ lib/SolarLunar.js             农历/节气换算（来自云日历）
 images/terms.json             二十四节气数据
 data/fallback-holidays.json   历史年份兜底数据
 data/raw-*.json               接口原始响应留档
-out/*.ics                     生成的订阅文件
+docs/*.ics                     生成的订阅文件
 ```
 
 ## 事件样式

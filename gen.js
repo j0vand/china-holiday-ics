@@ -17,7 +17,7 @@ const fs = require('fs');
 const path = require('path');
 const Module = require('module');
 
-const OUT_DIR = path.join(__dirname, 'out');
+const OUT_DIR = path.join(__dirname, 'docs');
 const DATA_DIR = path.join(__dirname, 'data');
 const BASE = 'https://mtapi.ruanmei.com/api/calendar';
 const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)';
