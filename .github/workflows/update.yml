@@ -1,0 +1,39 @@
+name: 更新节假日订阅
+
+on:
+  schedule:
+    # 每天北京时间 06:00 重新生成一次（提前一天抓国务院最新公告）
+    - cron: '0 22 * * *'
+  workflow_dispatch:      # 也支持手动触发
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'out/**'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 生成 ICS
+        run: node gen.js
+
+      - name: 提交变更
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add out/ data/
+          if git diff --cached --quiet; then
+            echo "数据无变化，跳过提交"
+          else
+            git commit -m "chore: 自动更新节假日数据"
+            git push
+          fi

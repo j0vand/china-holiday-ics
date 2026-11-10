@@ -1,0 +1,986 @@
+{
+  "gregorian": {
+    "d0101": [
+      {
+        "shortname": "元旦",
+        "name": "元旦",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0210": [
+      {
+        "shortname": "气象节",
+        "name": "气象节",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0214": [
+      {
+        "shortname": "情人节",
+        "name": "情人节",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0303": [
+      {
+        "shortname": "爱耳日",
+        "name": "全国爱耳日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0308": [
+      {
+        "shortname": "妇女节",
+        "name": "妇女节",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0312": [
+      {
+        "shortname": "植树节",
+        "name": "植树节",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0314": [
+      {
+        "shortname": "警察节",
+        "name": "国际警察节",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0315": [
+      {
+        "shortname": "消费者日",
+        "name": "国际消费者权益日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0323": [
+      {
+        "shortname": "气象日",
+        "name": "世界气象日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0401": [
+      {
+        "shortname": "愚人节",
+        "name": "愚人节",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0422": [
+      {
+        "shortname": "地球日",
+        "name": "地球日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0501": [
+      {
+        "shortname": "劳动节",
+        "name": "劳动节",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0512": [
+      {
+        "shortname": "护士节",
+        "name": "护士节",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0515": [
+      {
+        "shortname": "家庭日",
+        "name": "国际家庭日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      },
+      {
+        "shortname": "",
+        "name": "防治碘缺乏病日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0519": [
+      {
+        "shortname": "旅游日",
+        "name": "中国旅游日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0504": [
+      {
+        "shortname": "青年节",
+        "name": "青年节",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0531": [
+      {
+        "shortname": "无烟日",
+        "name": "世界无烟日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0601": [
+      {
+        "shortname": "儿童节",
+        "name": "儿童节",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0605": [
+      {
+        "shortname": "环境日",
+        "name": "世界环境日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0626": [
+      {
+        "shortname": "反毒品日",
+        "name": "国际反毒品日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      },
+      {
+        "shortname": "",
+        "name": "联合国宪章日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0701": [
+      {
+        "shortname": "建党日",
+        "name": "建党日",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      },
+      {
+        "shortname": "香港回归",
+        "name": "香港回归纪念日",
+        "isimportant": true,
+        "url": null,
+        "starttime": "1997-06-30T16:00:00Z"
+      }
+    ],
+    "d0711": [
+      {
+        "shortname": "航海日",
+        "name": "中国航海日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0801": [
+      {
+        "shortname": "建军节",
+        "name": "建军节",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0815": [
+      {
+        "shortname": "",
+        "name": "日本投降日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0903": [
+      {
+        "shortname": "",
+        "name": "抗战胜利日",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0910": [
+      {
+        "shortname": "教师节",
+        "name": "教师节",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      },
+      {
+        "shortname": "",
+        "name": "世界预防自杀日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0920": [
+      {
+        "shortname": "爱牙日",
+        "name": "全国爱牙日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0930": [
+      {
+        "shortname": "",
+        "name": "烈士纪念日",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0918": [
+      {
+        "shortname": "九·一八",
+        "name": "九·一八事变纪念日",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d1001": [
+      {
+        "shortname": "国庆节",
+        "name": "国庆节",
+        "isimportant": true,
+        "url": "https://mytime.ruanmei.com/festival/detail/31",
+        "starttime": null
+      },
+      {
+        "shortname": "音乐日",
+        "name": "国际音乐日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      },
+      {
+        "shortname": "住房日",
+        "name": "世界住房日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d1101": [
+      {
+        "shortname": "万圣节",
+        "name": "万圣节",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d1016": [
+      {
+        "shortname": "粮食日",
+        "name": "世界粮食日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d1108": [
+      {
+        "shortname": "记者节",
+        "name": "记者节",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d1117": [
+      {
+        "shortname": "大学生节",
+        "name": "国际大学生节",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d1201": [
+      {
+        "shortname": "艾滋病日",
+        "name": "艾滋病日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d1210": [
+      {
+        "shortname": "人权日",
+        "name": "世界人权日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d1213": [
+      {
+        "shortname": "公祭日",
+        "name": "南京大屠杀死难者国家公祭日",
+        "isimportant": true,
+        "url": null,
+        "starttime": "2014-12-12T16:00:00Z"
+      }
+    ],
+    "d1220": [
+      {
+        "shortname": "澳门回归",
+        "name": "澳门回归纪念日",
+        "isimportant": true,
+        "url": null,
+        "starttime": "1999-12-19T16:00:00Z"
+      }
+    ],
+    "d1224": [
+      {
+        "shortname": "平安夜",
+        "name": "平安夜",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d1225": [
+      {
+        "shortname": "圣诞节",
+        "name": "圣诞节",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0606": [
+      {
+        "shortname": "爱眼日",
+        "name": "全国爱眼日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0927": [
+      {
+        "shortname": "",
+        "name": "世界旅游日",
+        "isimportant": false,
+        "url": "https://mytime.ruanmei.com/festival/detail/61",
+        "starttime": null
+      }
+    ],
+    "d0126": [
+      {
+        "shortname": "海关日",
+        "name": "国际海关日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0204": [
+      {
+        "shortname": "抗癌症日",
+        "name": "世界抗癌症日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0221": [
+      {
+        "shortname": "母语日",
+        "name": "国际母语日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0228": [
+      {
+        "shortname": "罕见病日",
+        "name": "国际罕见病日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0311": [
+      {
+        "shortname": "",
+        "name": "国际尊严尊敬日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0321": [
+      {
+        "shortname": "森林日",
+        "name": "世界森林日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      },
+      {
+        "shortname": "儿歌日",
+        "name": "世界儿歌日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      },
+      {
+        "shortname": "",
+        "name": "国际消除种族歧视日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0324": [
+      {
+        "shortname": "",
+        "name": "世界防治结核病日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0419": [
+      {
+        "shortname": "",
+        "name": "耶稣受难日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0426": [
+      {
+        "shortname": "",
+        "name": "世界知识产权日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0503": [
+      {
+        "shortname": "哮喘日",
+        "name": "世界哮喘日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0520": [
+      {
+        "shortname": "",
+        "name": "全国学生营养日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      },
+      {
+        "shortname": "",
+        "name": "全国母乳喂养宣传日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      },
+      {
+        "shortname": null,
+        "name": "世界计量日",
+        "isimportant": false,
+        "url": null,
+        "starttime": "1999-05-18T01:24:00Z"
+      },
+      {
+        "shortname": null,
+        "name": "世界蜜蜂日",
+        "isimportant": false,
+        "url": null,
+        "starttime": "2016-05-18T01:26:00Z"
+      },
+      {
+        "shortname": null,
+        "name": "网络情人节",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0522": [
+      {
+        "shortname": "",
+        "name": "国际生物多样性日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0609": [
+      {
+        "shortname": "",
+        "name": "中国文化遗产日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0617": [
+      {
+        "shortname": "",
+        "name": "世界防治荒漠化和干旱日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0707": [
+      {
+        "shortname": "合作节",
+        "name": "国际合作节",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d1004": [
+      {
+        "shortname": "动物日",
+        "name": "世界动物日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d1011": [
+      {
+        "shortname": "视觉日",
+        "name": "世界视觉日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d1008": [
+      {
+        "shortname": "高血压日",
+        "name": "全国高血压日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d1013": [
+      {
+        "shortname": "",
+        "name": "国际减轻自然灾害日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d1010": [
+      {
+        "shortname": "",
+        "name": "世界精神卫生日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d1025": [
+      {
+        "shortname": "",
+        "name": "人类天花绝迹日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d1109": [
+      {
+        "shortname": "",
+        "name": "消防宣传日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d1114": [
+      {
+        "shortname": "糖尿病日",
+        "name": "联合国糖尿病日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d1215": [
+      {
+        "shortname": "",
+        "name": "世界强化免疫日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d1204": [
+      {
+        "shortname": "宪法日",
+        "name": "宪法日",
+        "isimportant": false,
+        "url": null,
+        "starttime": "2014-10-31T16:00:00Z"
+      }
+    ],
+    "d0423": [
+      {
+        "shortname": "读书日",
+        "name": "世界读书日",
+        "isimportant": false,
+        "url": null,
+        "starttime": "1995-11-13T16:00:00Z"
+      }
+    ],
+    "d0424": [
+      {
+        "shortname": "航天日",
+        "name": "中国航天日",
+        "isimportant": false,
+        "url": null,
+        "starttime": "2016-03-06T16:00:00Z"
+      }
+    ],
+    "d0521": [
+      {
+        "shortname": "茶日",
+        "name": "国际茶日",
+        "isimportant": false,
+        "url": null,
+        "starttime": "2020-05-01T03:16:00Z"
+      },
+      {
+        "shortname": null,
+        "name": "世界文化发展日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0110": [
+      {
+        "shortname": "警察节",
+        "name": "中国人民警察节",
+        "isimportant": false,
+        "url": null,
+        "starttime": "2020-07-10T03:16:00Z"
+      }
+    ],
+    "d0525": [
+      {
+        "shortname": null,
+        "name": "世界预防中风日",
+        "isimportant": false,
+        "url": null,
+        "starttime": "2004-05-18T01:32:00Z"
+      }
+    ],
+    "d0529": [
+      {
+        "shortname": null,
+        "name": "世界肠道健康日",
+        "isimportant": false,
+        "url": null,
+        "starttime": "2005-05-18T01:36:00Z"
+      },
+      {
+        "shortname": null,
+        "name": "国际维和人员日",
+        "isimportant": false,
+        "url": null,
+        "starttime": "2002-05-18T01:36:00Z"
+      }
+    ],
+    "d0530": [
+      {
+        "shortname": null,
+        "name": "全国科技工作者日",
+        "isimportant": false,
+        "url": null,
+        "starttime": "2017-05-18T01:37:00Z"
+      },
+      {
+        "shortname": null,
+        "name": "中国“五卅”运动纪念日",
+        "isimportant": false,
+        "url": null,
+        "starttime": "1925-05-18T01:38:00Z"
+      }
+    ],
+    "d0620": [
+      {
+        "shortname": null,
+        "name": "世界难民日",
+        "isimportant": false,
+        "url": null,
+        "starttime": "1951-05-18T01:46:00Z"
+      }
+    ],
+    "d0623": [
+      {
+        "shortname": null,
+        "name": "国际奥林匹克日",
+        "isimportant": false,
+        "url": null,
+        "starttime": "1948-05-18T01:48:00Z"
+      }
+    ],
+    "d0625": [
+      {
+        "shortname": "土地日",
+        "name": "全国土地日",
+        "isimportant": false,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0528": [
+      {
+        "shortname": "爱发日",
+        "name": "全国爱发日",
+        "isimportant": false,
+        "url": null,
+        "starttime": "2010-05-18T01:58:00Z"
+      }
+    ],
+    "d0518": [
+      {
+        "shortname": null,
+        "name": "国际博物馆日",
+        "isimportant": false,
+        "url": null,
+        "starttime": "1977-05-18T01:59:00Z"
+      }
+    ],
+    "d1111": [
+      {
+        "shortname": "双11",
+        "name": "双11购物狂欢节",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ]
+  },
+  "lunar": {
+    "d0101": [
+      {
+        "shortname": "春节",
+        "name": "春节",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0115": [
+      {
+        "shortname": "元宵节",
+        "name": "元宵节",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0202": [
+      {
+        "shortname": "龙抬头",
+        "name": "龙抬头",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0505": [
+      {
+        "shortname": "端午节",
+        "name": "端午节",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0707": [
+      {
+        "shortname": "七夕",
+        "name": "七夕",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0715": [
+      {
+        "shortname": "中元节",
+        "name": "中元节",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0815": [
+      {
+        "shortname": "中秋节",
+        "name": "中秋节",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0909": [
+      {
+        "shortname": "重阳节",
+        "name": "重阳节",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d1208": [
+      {
+        "shortname": "腊八节",
+        "name": "腊八节",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d1223": [
+      {
+        "shortname": "北方小年",
+        "name": "北方小年",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d1224": [
+      {
+        "shortname": "南方小年",
+        "name": "南方小年",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0100": [
+      {
+        "shortname": "除夕",
+        "name": "除夕",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0722": [
+      {
+        "shortname": "财神节",
+        "name": "财神节",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ]
+  },
+  "gregorianmonthweek": {
+    "d0520": [
+      {
+        "shortname": "母亲节",
+        "name": "母亲节",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d0630": [
+      {
+        "shortname": "父亲节",
+        "name": "父亲节",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ],
+    "d1144": [
+      {
+        "shortname": "感恩节",
+        "name": "感恩节",
+        "isimportant": true,
+        "url": null,
+        "starttime": null
+      }
+    ]
+  },
+  "byname": [
+    {
+      "shortname": "立春",
+      "name": "立春",
+      "isimportant": false,
+      "url": "yunrili://url?url=https%3a%2f%2fwww.ithome.com%2f0%2f408%2f393.htm",
+      "starttime": null
+    }
+  ]
+}
