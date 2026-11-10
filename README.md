@@ -6,13 +6,11 @@
 
 ## 订阅地址
 
-部署到 GitHub Pages 后：
-
 | 日历 | 地址 | 说明 |
 |---|---|---|
-| 完整版 | `https://<用户名>.github.io/<仓库名>/china-all.ics` | 节假日 + 调休 + 全部节日 + 节气 |
-| 仅法定节假日 | `https://<用户名>.github.io/<仓库名>/china-holidays.ics` | 放假、补班，最清爽 |
-| 仅节日 | `https://<用户名>.github.io/<仓库名>/china-festivals.ics` | 公历/农历节日、二十四节气 |
+| 完整版 | `https://j0vand.github.io/china-holiday-ics/china-all.ics` | 节假日 + 调休 + 全部节日 + 节气 |
+| 仅法定节假日 | `https://j0vand.github.io/china-holiday-ics/china-holidays.ics` | 放假、补班，最清爽 |
+| 仅节日 | `https://j0vand.github.io/china-holiday-ics/china-festivals.ics` | 公历/农历节日、二十四节气 |
 
 ## 在苹果设备上订阅
 
