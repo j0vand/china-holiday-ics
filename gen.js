@@ -74,6 +74,11 @@ function fmtDT(d) {
   );
 }
 
+/** Date -> "YYYY-MM-DD" */
+function fmtISODate(d) {
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+}
+
 /** 把 "YYYY-MM-DD" 之类的字符串变成 Date（本地零点） */
 function parseYmd(s) {
   const [y, m, d] = s.split('-').map(Number);
@@ -445,92 +450,95 @@ async function main() {
 
   // ---------- 日历 1：法定节假日 + 调休 ----------
   const legalEvents = [];
+
+  // 先把所有年份的休息日/补班日展开成绝对日期，跨年假期（如 12/31~1/2）才能连成一段。
+  // 若逐年度处理，元旦假期会被年份边界切成两截。
+  const restAbs = [];   // [{ y, md, date }]
+  const workAbs = [];
+  const allStarts = []; // [{ date, name, y }] 各节假日起始日
+
   for (const y of legalYears) {
     const c = legal[y];
-    const restSet = new Set(c.rest || []);
-    const workSet = new Set(c.work || []);
-
-    // 找出每个法定节日的名称：holidaystart 里给了起始日
-    const startMap = new Map(); // "dMMDD" -> 节名
-    if (c.holidaystart) {
-      for (const [name, key] of Object.entries(c.holidaystart)) startMap.set(key, name);
-    } else {
-      // 历史缓存年份没有 holidaystart，按时序推断
-      for (const s of majorHolidayStarts(y)) startMap.set('d' + pad(s.ymd, 4), s.name);
-    }
-
-    // 把休息日按"连续区间"分组：一个区间就是一个假期（调休前后可能不连续，需分段）
-    const restDays = [...restSet].map((k) => keyToYmd(k)).sort((a, b) => a - b);
-    // MMDD -> Date（本地零点）
     const asDate = (ymd) => new Date(y, Math.floor(ymd / 100) - 1, ymd % 100);
 
-    const startsSorted = [...startMap.entries()]
-      .map(([k, name]) => ({ ymd: keyToYmd(k), name, date: asDate(keyToYmd(k)) }))
-      .sort((a, b) => a.ymd - b.ymd);
-
-    // 连续休息日分组
-    const ranges = [];
-    for (const r of restDays) {
-      const dt = asDate(r);
-      const last = ranges[ranges.length - 1];
-      if (last) {
-        const expect = new Date(last.end);
-        expect.setDate(expect.getDate() + 1);
-        if (expect.getTime() === dt.getTime()) {
-          last.end = dt;
-          last.days.push(r);
-          continue;
-        }
-      }
-      ranges.push({ start: dt, end: dt, days: [r] });
+    for (const k of c.rest || []) {
+      const ymd = keyToYmd(k);
+      restAbs.push({ y, md: ymd, date: asDate(ymd) });
+    }
+    for (const k of c.work || []) {
+      const ymd = keyToYmd(k);
+      workAbs.push({ y, md: ymd, date: asDate(ymd) });
     }
 
-    for (const range of ranges) {
-      // 假期名：与该假期区间最接近（且不晚于假期结束）的节日起始日
-      let festName = '假期';
-      let best = -1;
-      for (const s of startsSorted) {
-        const diff = range.start.getTime() - s.date.getTime();
-        // 起始日在假期首日前后 7 天内都算同一个假期
-        if (diff >= -7 * 864e5 && diff <= 7 * 864e5) {
-          if (best === -1 || Math.abs(diff) < best) {
-            best = Math.abs(diff);
-            festName = s.name;
-          }
-        }
+    // 节假日起始日：接口给了 holidaystart；历史缓存年份按时序推断
+    if (c.holidaystart) {
+      for (const [name, key] of Object.entries(c.holidaystart)) {
+        allStarts.push({ name, date: asDate(keyToYmd(key)), y });
       }
-      const len = range.days.length;
-      const totalDays = len; // 该区间连休天数
-      for (let i = 0; i < range.days.length; i++) {
-        const r = range.days[i];
-        const m = Math.floor(r / 100);
-        const d = r % 100;
-        const dateStr = `${y}-${pad(m)}-${pad(d)}`;
-        const isFirst = i === 0;
-        const summary = isFirst ? `🎉 ${festName}（${totalDays}天）` : `🏖 放假`;
-        legalEvents.push(
-          allDayEvent(dateStr, summary, {
-            uid: `legal-rest-${dateStr}@cn-holiday-ics`,
-            desc: `法定节假日（休息第 ${i + 1}/${totalDays} 天）\n数据来源：云日历 mtapi.ruanmei.com`,
-          })
-        );
+    } else {
+      for (const s of majorHolidayStarts(y)) {
+        allStarts.push({ name: s.name, date: asDate(s.ymd), y });
       }
     }
+  }
 
-    for (const w of [...workSet]) {
-      const ymd = keyToYmd(w);
-      const m = Math.floor(ymd / 100);
-      const d = ymd % 100;
-      const dateStr = `${y}-${pad(m)}-${pad(d)}`;
+  restAbs.sort((a, b) => a.date - b.date);
+  workAbs.sort((a, b) => a.date - b.date);
+
+  // 按绝对日期分组连续区间（跨年也连）
+  const ranges = [];
+  for (const item of restAbs) {
+    const last = ranges[ranges.length - 1];
+    if (last) {
+      const expect = new Date(last.end);
+      expect.setDate(expect.getDate() + 1);
+      if (expect.getTime() === item.date.getTime()) {
+        last.end = item.date;
+        last.items.push(item);
+        continue;
+      }
+    }
+    ranges.push({ start: item.date, end: item.date, items: [item] });
+  }
+
+  for (const range of ranges) {
+    // 假期名：取与区间首日最近（前后 7 天内）的节假日起始日
+    let festName = '假期';
+    let best = Infinity;
+    for (const s of allStarts) {
+      const diff = Math.abs(range.start.getTime() - s.date.getTime());
+      if (diff <= 7 * 864e5 && diff < best) {
+        best = diff;
+        festName = s.name;
+      }
+    }
+    const totalDays = range.items.length;
+    for (let i = 0; i < range.items.length; i++) {
+      const item = range.items[i];
+      const dateStr = fmtISODate(item.date);
+      // 关键：整段假期用完全相同的标题。
+      // 苹果日历（以及多数客户端）只有在相邻全天事件标题一致时才画成连续横条，
+      // 首日写「元旦（3天）」、其余写「放假」会被切成互不相连的方块。
+      // 天数信息改放 DESCRIPTION，不影响显示连续性。
       legalEvents.push(
-        allDayEvent(dateStr, '⚠️ 调休上班（补班）', {
-          uid: `legal-work-${dateStr}@cn-holiday-ics`,
-          desc: '调休补班日\n数据来源：云日历 mtapi.ruanmei.com',
-          // 补班是"要上班"，用 OPAQUE 让日历显示为忙碌更直观
-          transp: 'OPAQUE',
+        allDayEvent(dateStr, `🎉 ${festName}`, {
+          uid: `legal-rest-${dateStr}@cn-holiday-ics`,
+          desc: `法定节假日：${festName}（第 ${i + 1}/${totalDays} 天，连休 ${totalDays} 天）\n数据来源：云日历 mtapi.ruanmei.com`,
         })
       );
     }
+  }
+
+  for (const item of workAbs) {
+    const dateStr = fmtISODate(item.date);
+    legalEvents.push(
+      allDayEvent(dateStr, '⚠️ 调休上班（补班）', {
+        uid: `legal-work-${dateStr}@cn-holiday-ics`,
+        desc: '调休补班日\n数据来源：云日历 mtapi.ruanmei.com',
+        // 补班是"要上班"，用 OPAQUE 让日历显示为忙碌更直观
+        transp: 'OPAQUE',
+      })
+    );
   }
 
   const legalIcs = [
