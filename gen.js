@@ -155,16 +155,19 @@ function icsHeader(name, desc, tzid) {
  * 生成一个全天事件
  * @param {string} dateStr  "YYYY-MM-DD"
  * @param {string} summary  标题
- * @param {object} opts     {desc, uid, emoji, transp, stamp}
+ * @param {object} opts     {desc, uid, transp}
  */
 function allDayEvent(dateStr, summary, opts = {}) {
   const start = parseYmd(dateStr);
   const end = new Date(start.getFullYear(), start.getMonth(), start.getDate() + 1);
   const uid = opts.uid || `${fmtDate(start)}-${Buffer.from(summary).toString('hex').slice(0, 12)}@cn-holiday-ics`;
+  // DTSTAMP 用事件日期本身，保证同一份数据多次生成结果完全一致，
+  // 避免 CI 每天因时间戳变化产生无意义的提交
+  const stamp = `${fmtDate(start)}T000000Z`;
   const lines = [
     'BEGIN:VEVENT',
     `UID:${uid}`,
-    `DTSTAMP:${opts.stamp || fmtDT(new Date())}`,
+    `DTSTAMP:${stamp}`,
     `DTSTART;VALUE=DATE:${fmtDate(start)}`,
     `DTEND;VALUE=DATE:${fmtDate(end)}`,
     `SUMMARY:${escapeText(summary)}`,
@@ -509,7 +512,6 @@ async function main() {
           allDayEvent(dateStr, summary, {
             uid: `legal-rest-${dateStr}@cn-holiday-ics`,
             desc: `法定节假日（休息第 ${i + 1}/${totalDays} 天）\n数据来源：云日历 mtapi.ruanmei.com`,
-            stamp: nowStamp,
           })
         );
       }
@@ -524,7 +526,6 @@ async function main() {
         allDayEvent(dateStr, '⚠️ 调休上班（补班）', {
           uid: `legal-work-${dateStr}@cn-holiday-ics`,
           desc: '调休补班日\n数据来源：云日历 mtapi.ruanmei.com',
-          stamp: nowStamp,
           // 补班是"要上班"，用 OPAQUE 让日历显示为忙碌更直观
           transp: 'OPAQUE',
         })
@@ -557,7 +558,6 @@ async function main() {
       allDayEvent(dateStr, `${star}${item.name}`, {
         uid: `fest-${encodeURIComponent(uidKey)}@cn-holiday-ics`,
         desc: `${groupLabel}\n${item.isimportant ? '重点节日\n' : ''}简称：${item.shortname || item.name}`,
-        stamp: nowStamp,
       })
     );
   };
