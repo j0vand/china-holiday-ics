@@ -67,3 +67,41 @@ docs/*.ics                     生成的订阅文件
 | `★ 中秋节` | 重点节日（带星标） |
 
 放假事件用 `TRANSP:TRANSPARENT`（不占用忙碌时间），补班用 `TRANSP:OPAQUE`，不会干扰会议安排。
+
+## 曾经用过的第三方订阅（备查，想换回去时用）
+
+下面两个是我做这套之前订阅的，来自第三方项目，内容没本项目的全，但轻量稳定。留在这里方便随时换回去。
+
+| 日历 | 地址 | 来源 |
+|---|---|---|
+| 中国节假日 | `https://cdn.jsdelivr.net/npm/chinese-days/dist/holidays.ics` | [vsme/chinese-days](https://github.com/vsme/chinese-days)（NPM 包 `chinese-days`，经 jsDelivr CDN 分发） |
+| 中国节气 | `https://cal.bboy.app/custom.ics?feeds=festival` | [bboysoul](https://cal.bboy.app/) 提供的免费订阅服务 |
+
+两个都是第三方公开服务，无需账号。
+
+`cal.bboy.app` 的 `feeds` 参数可以自由组合，可选值：`holiday`（法定节假日+补班）、`festival`（节日节气）、`almanac`（老黄历）、`weather`（天气）、`horoscope`（星座）、`movies`、`sports`、`stock`。比如想用一个订阅同时覆盖节假日和节日：
+
+```
+https://cal.bboy.app/custom.ics?feeds=holiday,festival
+```
+
+### 与本文档订阅的差别
+
+| | 本项目 | chinese-days | cal.bboy.app |
+|---|---|---|---|
+| 覆盖年份 | 2022–2027 | 2025–2027 | 2026–2027 |
+| 法定节假日 + 调休 | ✅ 218 事件 | ✅ 38 事件 | ✅ 73 事件（`feeds=holiday`） |
+| 农历节日 | ✅ 13 个（含除夕、南北小年） | ❌ | ✅ 多数，但缺除夕 |
+| 二十四节气 | ✅ | ❌ | ✅ 100 事件（`feeds=festival`） |
+| 假期首日标注连休天数 | ✅ | ❌ | ❌ |
+| 补班日标注「哪个节前」 | ❌ | ❌ | ✅（如「补班工作日（春节前）」） |
+| 自动更新 | GitHub Actions 每日 | 项目发版后 CDN 更新 | 服务端自动 |
+
+`chinese-days` 那份只有「休 / 班」两种标记（如 `元旦（休）`、`春节（班）`），够用但信息少；`cal.bboy.app` 按 `feeds` 拆分，节日、节气、黄历、天气各是一个 feed，要哪块选哪块。
+
+### 换回去
+
+1. 日历 App 里删掉本项目订阅（iPhone：设置 → 日历 → 账户 → 对应订阅 → 删除账户）
+2. 按上面「在苹果设备上订阅」的步骤添加旧地址即可
+
+原来那两个是分开订的（一个节假日、一个节气），也可以只订 `cal.bboy.app` 的 `feeds=holiday,festival` 一个搞定。
